@@ -71,6 +71,15 @@ describe( 'rule', () => {
     });
   });
 
+  it( 'should correctly resolve value with nested `calc` function calls', () => {
+    const input = 'h1 { padding: calc(10px+calc(5*calc(5+5))) calc(20px+10px); }';
+    const expectedOutput = 'h1 { padding: 60px 30px; }';
+
+    return process( input ).then(({ css }) => {
+      expect( css ).toEqual( expectedOutput );
+    });
+  });
+
   it( 'should only resolve `calc` function call within value', () => {
     const input = 'h1 { color: color(red l(+calc(10%*2.5))); }';
     const expectedOutput = 'h1 { color: color(red l(+25%)); }';

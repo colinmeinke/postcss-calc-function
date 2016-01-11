@@ -63,34 +63,51 @@ const getCalcMatches = input => {
   return matches;
 };
 
-const calcFunction = postcss.plugin( 'postcss-calc-function', () => ( css, result ) => {
+const doMaths = expression => {
+  const { units, unitlessExpression } = getExpressionUnits( expression );
+
+  // If mixed units don't calculate
+  if ( units.length > 1 ) {
+    return null;
+  }
+
+  try {
+    return math.eval( unitlessExpression ) + units.join( '' );
+  } catch ( error ) {
+    return null;
+  }
+};
+
+const resolveCalcs = input => {
+  let output = input;
+
+  // Match calc(...)'s
+  const matches = getCalcMatches( input );
+
+  for ( const calc of matches ) {
+    // Get calc(...)'s mathmatical expression
+    let expression = calc.slice( pattern.length, -1 ).trim();
+
+    // If expression includes `calc` functions
+    if ( expression.includes( pattern )) {
+      // Resolve `calc` functions before we continue
+      expression = resolveCalcs( expression );
+    }
+
+    const result = doMaths( expression );
+
+    if ( result !== null ) {
+      output = output.replace( calc, result );
+    }
+  }
+
+  return output;
+};
+
+const calcFunction = postcss.plugin( 'postcss-calc-function', () => css => {
   css.walkRules( rule => {
     rule.walkDecls( decl => {
-      let { value } = decl;
-
-      // Match calc(...)'s
-      const matches = getCalcMatches( value );
-
-      matches.forEach( calc => {
-        // Get calc(...)'s mathmatical expression
-        const expression = calc.slice( pattern.length, -1 ).trim();
-
-        const { units, unitlessExpression } = getExpressionUnits( expression );
-
-        if ( units.length <= 1 ) {
-          try {
-            // Run expression through mathjs
-            const total = math.eval( unitlessExpression );
-
-            // Replace calc(...) with unitlessCalc result appending any unit
-            decl.value = value = value.replace( calc, total + units.join( '' )); // eslint-disable-line no-param-reassign,max-len
-          } catch ( error ) {
-            result.warn( `Could not resolve ${ calc }: math error` );
-          }
-        } else {
-          result.warn( `Could not resolve ${ calc }: contains multiple unit types` );
-        }
-      });
+      decl.value = resolveCalcs( decl.value ); // eslint-disable-line no-param-reassign
     });
   });
 });
