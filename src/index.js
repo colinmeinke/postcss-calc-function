@@ -46,7 +46,7 @@ const getCalcMatches = input => {
         if ( openParenthesisCount ) {
           openParenthesisCount--;
         } else {
-          matches.push( input.substring( start, i + 1 ) );
+          matches.push( input.substring( start, i + 1 ));
 
           matches = matches.concat(
             getCalcMatches( input.substring( start + i + 1 ))
