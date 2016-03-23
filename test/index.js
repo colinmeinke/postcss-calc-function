@@ -3,9 +3,7 @@ import postcss from 'postcss';
 
 import customProps from '../src';
 
-const process = css => {
-  return postcss([ customProps() ]).process( css );
-};
+const process = css => postcss([ customProps() ]).process( css );
 
 describe( 'rule', () => {
   it( 'should correctly resolve addition expression', () => {
