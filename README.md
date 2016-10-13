@@ -15,14 +15,14 @@ npm install postcss-calc-function
 
 ```js
 ...
-import calcFunction from 'postcss-calc-function';
+import calcFunction from 'postcss-calc-function'
 
 export default {
   ...
   postcss: [
-    calcFunction(),
-  ],
-};
+    calcFunction()
+  ]
+}
 ```
 
 ### Input
