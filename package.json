@@ -1,43 +1,21 @@
 {
-  "name": "postcss-calc-function",
-  "version": "0.0.0-semantically-released",
-  "description": "A PostCSS plugin to resolve the CSS calc function",
-  "main": "lib/index.js",
-  "scripts": {
-    "build": "babel src --out-dir lib",
-    "clean": "rimraf lib",
-    "commit": "git-cz",
-    "fix": "standard --fix",
-    "lint": "standard --verbose | snazzy",
-    "prepublish": "npm run clean && npm run build",
-    "test": "mocha --compilers js:babel-core/register test/*.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
   "author": {
     "name": "Colin Meinke",
     "email": "hello@colinmeinke.com",
     "url": "colinmeinke.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/colinmeinke/postcss-calc-function"
-  },
   "bugs": {
     "url": "https://github.com/colinmeinke/postcss-calc-function/issues"
   },
-  "license": "ISC",
-  "keywords": [
-    "calc",
-    "function",
-    "postcss",
-    "postcss-plugin"
-  ],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "mathjs": "^3.5.3"
   },
-  "peerDependencies": {
-    "postcss": "^5.0.0"
-  },
+  "description": "A PostCSS plugin to resolve the CSS calc function",
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
@@ -53,9 +31,31 @@
     "snazzy": "^5.0.0",
     "standard": "^8.4.0"
   },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
-  }
+  "keywords": [
+    "calc",
+    "function",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "license": "ISC",
+  "main": "lib/index.js",
+  "name": "postcss-calc-function",
+  "peerDependencies": {
+    "postcss": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colinmeinke/postcss-calc-function"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "commit": "git-cz",
+    "fix": "standard --fix",
+    "lint": "standard --verbose | snazzy",
+    "prepublish": "npm run tidy && npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "test": "mocha --compilers js:babel-core/register test/*.js",
+    "tidy": "rimraf lib"
+  },
+  "version": "0.0.0-semantically-released"
 }
