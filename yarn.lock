@@ -1062,8 +1062,8 @@ eslint-config-standard@6.2.1:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-6.2.1.tgz#d3a68aafc7191639e7ee441e7348739026354292"
 
 eslint-plugin-promise@~3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.3.0.tgz#20a1ef58b4243ffdaef82ee9360a02353a7cca89"
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-3.3.1.tgz#c1e980cf7c3cac3300731450fb31d2bb843eb226"
 
 eslint-plugin-react@~6.4.1:
   version "6.4.1"
@@ -2061,8 +2061,8 @@ map-stream@~0.1.0:
   resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
 
 mathjs@^3.5.3:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-3.6.0.tgz#a31bdc117f8cc9c34d6489dfbe08cb96579c325a"
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-3.7.0.tgz#95ec21abcac27e7c644c915a9290525669445b9f"
   dependencies:
     complex.js "2.0.1"
     decimal.js "5.0.8"
