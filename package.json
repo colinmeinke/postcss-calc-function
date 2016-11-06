@@ -4,6 +4,14 @@
     "email": "hello@colinmeinke.com",
     "url": "colinmeinke.com"
   },
+  "babel": {
+    "plugins": [
+      "transform-object-rest-spread"
+    ],
+    "presets": [
+      "es2015"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/colinmeinke/postcss-calc-function/issues"
   },
